@@ -191,37 +191,3 @@ struct List
         }
     }
 };
-
-int main()
-{
-    List list;
-    list.addNodeToEnd(2);
-    list.display();
-
-    list.addNodeToEnd(3);
-    list.display();
-
-    list.addNodeToStart(1);
-    list.display();
-
-    list.deleteNodeFromStart();
-    list.display();
-
-    list.deleteNodeFromEnd();
-    list.display();
-
-    list.addNodeToStart(1);
-    list.addNodeToEnd(3);
-    list.addNodeToEnd(4);
-    list.addNodeToEnd(5);
-
-    list.display();
-
-    list.addNodeToPosition(5, 3);
-    list.display();
-
-    list.deleteNodeFromPosition(3);
-    list.display();
-
-    list.deallocate();
-}
