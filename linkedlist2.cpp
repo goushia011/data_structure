@@ -78,15 +78,22 @@ struct List
     }
     void addNodeToPosition(int data, int position)
     {
-        if (position > length + 1) {
-            cout<<"Insertio failed! Position out of bound"<<endl;
+        if (position > length + 1)
+        {
+            cout << "Insertion failed! Position out of bound" << endl;
             return;
         }
-        if(position == 1) {
+        if (position == 1)
+        {
+            cout << "adding to start";
             addNodeToStart(data);
+            return;
         }
-        if(position == length + 1) {
+        if (position == length + 1)
+        {
+            cout << "adding to end";
             addNodeToEnd(data);
+            return;
         }
         Node *temp = head;
         while (position-- > 1)
@@ -97,7 +104,9 @@ struct List
         node->data = data;
         node->prev = temp->prev;
         node->next = temp;
-        temp = temp->next;
+
+        node->prev->next = node;
+        temp->prev = node;
     }
 
     void deleteNodeFromEnd()
@@ -143,7 +152,33 @@ struct List
         delete deleteThis;
         length--;
     }
-    void deleteNodeFromPosition(int position);
+    void deleteNodeFromPosition(int position)
+    {
+        if (position > length)
+        {
+            cout << "Deletion failed! " << endl;
+            return;
+        }
+        if (position == 1)
+        {
+            deleteNodeFromStart();
+            return;
+        }
+        if (position == length)
+        {
+            deleteNodeFromEnd();
+            return;
+        }
+        Node *temp = head, *deleteThis;
+        while (position-- > 1)
+        {
+            temp = temp->next;
+        }
+        deleteThis = temp;
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        delete deleteThis;
+    }
 
     void deallocate()
     {
@@ -175,7 +210,17 @@ int main()
     list.deleteNodeFromEnd();
     list.display();
 
-    list.addNodeToPosition(5, 2);
+    list.addNodeToStart(1);
+    list.addNodeToEnd(3);
+    list.addNodeToEnd(4);
+    list.addNodeToEnd(5);
+
+    list.display();
+
+    list.addNodeToPosition(5, 3);
+    list.display();
+
+    list.deleteNodeFromPosition(3);
     list.display();
 
     list.deallocate();
