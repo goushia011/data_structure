@@ -35,9 +35,12 @@ void display()
         for (int i = top; i >= 0; i--)
             
             cout << stack[i]<<endl;
-            
         
     }
+    else{
+        cout<<"stack is empty";
+    }
+    
 }
 int main()
 {
