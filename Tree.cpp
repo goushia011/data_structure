@@ -15,9 +15,7 @@ struct Node
 void postorderTraversal(Node *node)
 {
     if (node == NULL)
-    {
         return;
-    }
     else
     {
         postorderTraversal(node->left);
@@ -28,9 +26,7 @@ void postorderTraversal(Node *node)
 void inorderTraversal(Node *node)
 {
     if (node == NULL)
-    {
         return;
-    }
     else
     {
         inorderTraversal(node->left);
@@ -42,9 +38,7 @@ void inorderTraversal(Node *node)
 void preorderTraversal(Node *node)
 {
     if (node == NULL)
-    {
         return;
-    }
     else
     {
         cout << node->data << " ";
